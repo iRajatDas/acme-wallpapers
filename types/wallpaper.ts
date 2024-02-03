@@ -22,7 +22,7 @@ export interface SortOptions {
 
 export interface FilterOptions {}
 
-type Orientation = "VERTICAL" | "HORIZONTAL" | "SQUARE";
+export type Orientation = "VERTICAL" | "HORIZONTAL" | "SQUARE";
 export interface GetWallpapersOptions {
   nextCursor?: number;
   prevCursor?: number;
