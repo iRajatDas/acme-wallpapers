@@ -104,7 +104,7 @@ async function main() {
     );
 
     // delay 30 seconds
-    await new Promise((resolve) => setTimeout(resolve, 30000));
+    // await new Promise((resolve) => setTimeout(resolve, 30000));
 
     // Insert wallpapers
     const wallpapers = await Promise.all(
