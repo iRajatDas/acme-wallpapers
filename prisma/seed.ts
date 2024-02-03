@@ -17,34 +17,26 @@ async function createTag(
   name: string,
   description: string
 ): Promise<{ id: string }> {
-  const existingTag = await db.tag.findFirst({ where: { name } });
-
-  if (existingTag) {
-    return existingTag;
-  }
-
-  const newTag = await db.tag.create({
-    data: { name, description },
+  const existingTag = await db.tag.upsert({
+    where: { name },
+    create: { name, description },
+    update: { name, description },
   });
 
-  return { id: newTag.id };
+  return { id: existingTag.id };
 }
 
 async function createCategory(
   name: string,
   description: string
 ): Promise<{ id: string }> {
-  const existingCategory = await db.category.findFirst({ where: { name } });
-
-  if (existingCategory) {
-    return existingCategory;
-  }
-
-  const newCategory = await db.category.create({
-    data: { name, description },
+  const existingCategory = await db.category.upsert({
+    where: { name },
+    create: { name, description },
+    update: { name, description },
   });
 
-  return { id: newCategory.id };
+  return { id: existingCategory.id };
 }
 
 async function main() {
