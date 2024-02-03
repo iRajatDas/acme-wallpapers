@@ -1,44 +1,87 @@
 import db from "../lib/prisma/db";
 
-async function main() {
-  // Create tags
-
-  const tag1 = await db.tag.create({ data: { name: "Nature" } });
-  const tag2 = await db.tag.create({ data: { name: "Abstract" } });
-
-  // Create categories
-  const category1 = await db.category.create({
-    data: { name: "Landscapes" },
-  });
-  const category2 = await db.category.create({
-    data: { name: "Digital Art" },
-  });
-
-  // Create wallpapers with tags and categories
-  const wallpaper1 = await db.wallpaper.create({
-    data: {
-      url: "https://example.com/wallpaper1.jpg",
-      tags: { connect: [{ id: tag1.id }] },
-      categories: { connect: [{ id: category1.id }] },
-    },
-  });
-
-  const wallpaper2 = await db.wallpaper.create({
-    data: {
-      url: "https://example.com/wallpaper2.jpg",
-      tags: { connect: [{ id: tag2.id }] },
-      categories: { connect: [{ id: category2.id }] },
-    },
-  });
-
-  console.log("Seed data created successfully!");
+async function getRandomImage(): Promise<string> {
+  const response = await fetch("https://picsum.photos/1080/1920");
+  return response.url;
 }
 
-main()
-  .catch((e) => {
-    throw e;
-  })
-  .finally(async () => {
+async function main() {
+  try {
+    // Insert tags
+    const tags = await Promise.all(
+      [...Array(3)].map(async (_, i) => {
+        const newTag = await db.tag.create({
+          data: { name: `Tag Vert ${i + 1}`, description: "Sample Vert tag" },
+        });
+        return { id: newTag.id };
+      })
+    );
+
+    // Insert categories
+    const categories = await Promise.all(
+      [...Array(5)].map(async (_, i) => {
+        const newCategory = await db.category.create({
+          data: {
+            name: `Category Vert ${i + 1}`,
+            description: "Sample Vert category",
+          },
+        });
+        return { id: newCategory.id };
+      })
+    );
+
+    // Insert wallpapers
+    const wallpapers = await Promise.all(
+      [...Array(160)].map(async (_, i) => {
+        const randImg = await getRandomImage();
+        const newWallpaper = await db.wallpaper.create({
+          data: {
+            title: `Wallpaper Vert ${i + 1}`,
+            url: randImg,
+            tags: {
+              connect: tags
+                .sort(() => Math.random() - 0.5)
+                .slice(0, Math.floor(Math.random() * 3) + 1),
+            },
+            categories: {
+              connect: categories
+                .sort(() => Math.random() - 0.5)
+                .slice(0, Math.floor(Math.random() * 3) + 1),
+            },
+          },
+        });
+        return newWallpaper;
+      })
+    );
+
+    console.log("Tags created:", tags.length);
+    console.log("Categories created:", categories.length);
+    console.log("Wallpapers created:", wallpapers.length);
+
+    console.log("Seed data created successfully!");
+  } catch (error) {
+    console.error(error);
+    process.exit(1);
+  } finally {
     await db.$disconnect();
-    process.exit();
-  });
+    process.exit(0);
+  }
+}
+
+main();
+
+async function deSeed() {
+  try {
+    await db.wallpaper.deleteMany();
+    await db.tag.deleteMany();
+    await db.category.deleteMany();
+    console.log("Seed data deleted successfully!");
+  } catch (error) {
+    console.error(error);
+    process.exit(1);
+  } finally {
+    await db.$disconnect();
+  }
+}
+
+// deSeed();

@@ -1,7 +1,12 @@
-import Image from "next/image";
-import Link from "next/link";
-import { Suspense } from "react";
+import Gallery from "@/components/gallery";
+import Tags from "@/components/tags";
 
 export default async function Home() {
-  return <></>;
+  
+  return (
+    <>
+      <Tags />
+      <Gallery />
+    </>
+  );
 }

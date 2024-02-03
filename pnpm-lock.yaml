@@ -7,6 +7,9 @@ dependencies:
   '@prisma/client':
     specifier: ^5.9.1
     version: 5.9.1(prisma@5.9.1)
+  '@tabler/icons-react':
+    specifier: ^2.47.0
+    version: 2.47.0(react@18.2.0)
   '@tanstack/react-query':
     specifier: ^5.18.0
     version: 5.18.0(react@18.2.0)
@@ -16,6 +19,9 @@ dependencies:
   '@tanstack/react-query-next-experimental':
     specifier: ^5.18.0
     version: 5.18.0(@tanstack/react-query@5.18.0)(next@14.1.0)(react@18.2.0)
+  clsx:
+    specifier: ^2.1.0
+    version: 2.1.0
   framer-motion:
     specifier: ^11.0.3
     version: 11.0.3(react-dom@18.2.0)(react@18.2.0)
@@ -28,6 +34,12 @@ dependencies:
   react-dom:
     specifier: ^18
     version: 18.2.0(react@18.2.0)
+  react-intersection-observer:
+    specifier: ^9.6.0
+    version: 9.6.0(react-dom@18.2.0)(react@18.2.0)
+  tailwind-merge:
+    specifier: ^2.2.1
+    version: 2.2.1
 
 devDependencies:
   '@tanstack/eslint-plugin-query':
@@ -2625,6 +2637,20 @@ packages:
       tslib: 2.6.2
     dev: false
 
+  /@tabler/icons-react@2.47.0(react@18.2.0):
+    resolution: {integrity: sha512-iqly2FvCF/qUbgmvS8E40rVeYY7laltc5GUjRxQj59DuX0x/6CpKHTXt86YlI2whg4czvd/c8Ce8YR08uEku0g==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@tabler/icons': 2.47.0
+      prop-types: 15.8.1
+      react: 18.2.0
+    dev: false
+
+  /@tabler/icons@2.47.0:
+    resolution: {integrity: sha512-4w5evLh+7FUUiA1GucvGj2ReX2TvOjEr4ejXdwL/bsjoSkof6r1gQmzqI+VHrE2CpJpB3al7bCTulOkFa/RcyA==}
+    dev: false
+
   /@tanstack/eslint-plugin-query@5.18.0(eslint@8.56.0)(typescript@5.3.3):
     resolution: {integrity: sha512-R7x4YV304oduB9IYi660pfNpeO4XcFntkmIG0QV9/IaLeUq+H6M1C+5Th/092ScIrDtU6XgngY2YsS6bwt4vAg==}
     peerDependencies:
@@ -4693,7 +4719,6 @@ packages:
       loose-envify: 1.4.0
       object-assign: 4.1.1
       react-is: 16.13.1
-    dev: true
 
   /punycode@2.3.1:
     resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}
@@ -4713,9 +4738,21 @@ packages:
       scheduler: 0.23.0
     dev: false
 
+  /react-intersection-observer@9.6.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-ZJCi6aOY4kIulpUhWRNIFTyMUKOmSA25iw8sKH07fhlqWTaWD5CWvWarqH4N31EyjCFKsgetvr/amRpnuEWzRg==}
+    peerDependencies:
+      react: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
   /react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
-    dev: true
 
   /react-remove-scroll-bar@2.3.4(@types/react@18.2.51)(react@18.2.0):
     resolution: {integrity: sha512-63C4YQBUt0m6ALadE9XV56hV8BgJWDmmTPY758iIJjfQKt2nYwoUrPk0LXRXcB/yIj82T1/Ixfdpdk68LwIB0A==}
@@ -5093,6 +5130,12 @@ packages:
 
   /tailwind-merge@1.14.0:
     resolution: {integrity: sha512-3mFKyCo/MBcgyOTlrY8T7odzZFx+w+qKSMAmdFzRvqBfLlSigU6TZnlFHK0lkMwj9Bj8OYU+9yW9lmGuS0QEnQ==}
+    dev: false
+
+  /tailwind-merge@2.2.1:
+    resolution: {integrity: sha512-o+2GTLkthfa5YUt4JxPfzMIpQzZ3adD1vLVkvKE1Twl9UAhGsEbIZhHHZVRttyW177S8PDJI3bTQNaebyofK3Q==}
+    dependencies:
+      '@babel/runtime': 7.23.9
     dev: false
 
   /tailwind-variants@0.1.20(tailwindcss@3.4.1):
