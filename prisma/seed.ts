@@ -103,6 +103,9 @@ async function main() {
       })
     );
 
+    // delay 30 seconds
+    await new Promise((resolve) => setTimeout(resolve, 30000));
+
     // Insert wallpapers
     const wallpapers = await Promise.all(
       [...Array(160)].map(async (_, i) => {
