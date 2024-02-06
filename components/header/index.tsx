@@ -35,7 +35,8 @@ export default function Header() {
     <div className="border-b-[0.5px] border-neutral-700">
       <Navbar
         onMenuOpenChange={setIsMenuOpen}
-        shouldHideOnScroll
+        // shouldHideOnScroll
+
         classNames={{
           wrapper: "mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl",
         }}

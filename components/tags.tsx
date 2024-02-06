@@ -15,7 +15,7 @@ const Tags = () => {
   // });
 
   return (
-    <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl sticky top-0 z-50 backdrop-blur-md">
+    <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl sticky-- top-0- z-50-- backdrop-blur-md">
       <ScrollShadow
         orientation="horizontal"
         ref={container}

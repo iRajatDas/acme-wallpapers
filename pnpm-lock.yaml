@@ -34,6 +34,9 @@ dependencies:
   react-dom:
     specifier: ^18
     version: 18.2.0(react@18.2.0)
+  react-infinite-scroll-component:
+    specifier: ^6.1.0
+    version: 6.1.0(react@18.2.0)
   react-intersection-observer:
     specifier: ^9.6.0
     version: 9.6.0(react-dom@18.2.0)(react@18.2.0)
@@ -4944,6 +4947,15 @@ packages:
       scheduler: 0.23.0
     dev: false
 
+  /react-infinite-scroll-component@6.1.0(react@18.2.0):
+    resolution: {integrity: sha512-SQu5nCqy8DxQWpnUVLx7V7b7LcA37aM7tvoWjTLZp1dk6EJibM5/4EJKzOnl07/BsM1Y40sKLuqjCwwH/xV0TQ==}
+    peerDependencies:
+      react: '>=16.0.0'
+    dependencies:
+      react: 18.2.0
+      throttle-debounce: 2.3.0
+    dev: false
+
   /react-intersection-observer@9.6.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-ZJCi6aOY4kIulpUhWRNIFTyMUKOmSA25iw8sKH07fhlqWTaWD5CWvWarqH4N31EyjCFKsgetvr/amRpnuEWzRg==}
     peerDependencies:
@@ -5432,6 +5444,11 @@ packages:
     resolution: {integrity: sha512-RVZSIV5IG10Hk3enotrhvz0T9em6cyHBLkH/YAZuKqd8hRkKhSfCGIcP2KUY0EPxndzANBmNllzWPwak+bheSw==}
     dependencies:
       any-promise: 1.3.0
+
+  /throttle-debounce@2.3.0:
+    resolution: {integrity: sha512-H7oLPV0P7+jgvrk+6mwwwBDmxTaxnu9HMXmloNLXwnNO0ZxZ31Orah2n8lU1eMPvsaowP2CX+USCgyovXfdOFQ==}
+    engines: {node: '>=8'}
+    dev: false
 
   /to-regex-range@5.0.1:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
