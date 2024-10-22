@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useTagsQuery } from "@/queries/use-tags";
 import { ScrollShadow, Skeleton } from "@nextui-org/react";
 
+const fixedWidths = [50, 70, 90, 60, 80, 100, 40, 75, 85, 65, 55, 95, 45];
+
 const Tags = () => {
   const container = useRef<HTMLDivElement>(null);
   const { data: tags, isLoading, isError, isRefetching } = useTagsQuery();
@@ -24,7 +26,7 @@ const Tags = () => {
         className="flex items-center py-4 overflow-x-scroll-- snap-x snap-proximity gap-x-2 sm:gap-x-2.5 scrollbar-hide relative"
       >
         {isLoading &&
-          [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((tag) => (
+          fixedWidths.map((tag, index) => (
             <Skeleton
               isLoaded={!isLoading}
               className="rounded-lg shrink-0 dark:!bg-default-500/20"
@@ -35,7 +37,7 @@ const Tags = () => {
                   className="h-4"
                   style={{
                     // random width
-                    width: `${Math.floor(Math.random() * 100) + 20}px`,
+                    width: `${fixedWidths[index % fixedWidths.length]}px`,
                   }}
                 ></span>
               </div>

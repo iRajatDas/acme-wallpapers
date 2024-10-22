@@ -1,14 +1,12 @@
 "use client";
-import NextImage from "next/image";
-import { cn, debounce } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import { useWallpapersWithOptionsQuery } from "@/queries/use-wallpapers";
 import { GetWallpapersOptions } from "@/types/wallpaper";
-import { Image, Skeleton, Spinner } from "@nextui-org/react";
+import { Skeleton } from "@nextui-org/react";
 import Link from "next/link";
-import { useInView } from "react-intersection-observer";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import AnimatedNextImage from "./animated-next-image";
 
@@ -30,13 +28,8 @@ export default function Gallery() {
 
   const {
     isLoading,
-    isRefetching,
-    isError,
-    refetch,
     fetchNextPage,
-    fetchPreviousPage,
     hasNextPage,
-    isFetched,
     isFetching,
     isFetchingNextPage,
     data: wallpapers,
@@ -131,16 +124,17 @@ export default function Gallery() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="p-4 sm:p-8 grid place-items-center w-full col-span-full"
             >
-              <div className="max-w-7xl relative mx-auto py-8 md:py-16 px-4 w-full text-center">
-                <h1 className="text-2xl md:text-5xl font-bold dark:text-white">
-                  No more wallpapers, huh?
-                </h1>
-                <p className="max-w-lg mx-auto text-sm sm:text-lg md:text-xl mt-2.5 md:mt-8 dark:text-neutral-200">
-                  Guess you&apos;ve seen it all. Time to go outside and
-                  experience the real pixels of life!
-                </p>
+              <div className="p-4 sm:p-8 grid place-items-center w-full col-span-full">
+                <div className="max-w-7xl relative mx-auto py-8 md:py-16 px-4 w-full text-center">
+                  <h1 className="text-2xl md:text-5xl font-bold dark:text-white">
+                    No more wallpapers, huh?
+                  </h1>
+                  <p className="max-w-lg mx-auto text-sm sm:text-lg md:text-xl mt-2.5 md:mt-8 dark:text-neutral-200">
+                    Guess you&apos;ve seen it all. Time to go outside and
+                    experience the real pixels of life!
+                  </p>
+                </div>
               </div>
             </motion.div>
           </AnimatePresence>
@@ -231,11 +225,11 @@ interface GalleryLoaderProps {
 const GalleryLoaderState: FC<GalleryLoaderProps> = ({ options, isLoading }) => {
   return (
     <>
-      {[...Array(16)].map((tag) => (
+      {[...Array(16)].map((tag, index) => (
         <Skeleton
           isLoaded={!isLoading}
           className="rounded-lg shrink-0 dark:!bg-default-500/20"
-          key={tag}
+          key={index}
         >
           <div
             className={cn(
